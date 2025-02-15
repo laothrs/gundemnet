@@ -1,0 +1,42 @@
+# IDE ve Editör dosyaları
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Sistem dosyaları
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Node modülleri ve paket dosyaları
+node_modules/
+package-lock.json
+yarn.lock
+
+# Derleme ve build dosyaları
+dist/
+build/
+*.min.js
+*.min.css
+
+# Log dosyaları
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ortam değişkenleri
+.env
+.env.local
+.env.*.local
+
+# Geçici dosyalar
+*.tmp
+*.temp
+.cache/
+
+# Diğer
+*.bak
+*.swp
+*~ 

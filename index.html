@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NetGündem - Türkiye'nin en güncel haber kaynağı. Son dakika haberleri, gündem, ekonomi, spor ve daha fazlası.">
+    <meta name="keywords" content="haberler, son dakika, gündem, ekonomi, spor, dünya">
+    <meta name="author" content="NetGündem">
+    <meta property="og:title" content="NetGündem - Güncel Haberler">
+    <meta property="og:description" content="Türkiye'nin en güncel haber kaynağı">
+    <meta property="og:image" content="./images/og-image.jpg">
+    <meta property="og:url" content="https://gundemnet.vercel.app">
+    <title>NetGündem - Güncel Haberler</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./favicon.png">
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link visually-hidden">Ana içeriğe git</a>
+
+    <!-- Theme Switcher -->
+    <div class="theme-switch">
+        <button id="themeToggle" aria-label="Tema Değiştir">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+        </button>
+    </div>
+
+    <header role="banner">
+        <div class="announcement-bar" role="alert">
+            <p>Son Dakika: <span id="breakingNews">Önemli gelişmeler için takipte kalın!</span></p>
+        </div>
+        
+        <div class="logo">
+            <h1><a href="/" data-category="ana-sayfa" aria-label="Ana Sayfa">NetGündem</a></h1>
+            <div class="header-actions">
+                <div class="search-box" role="search">
+                    <input type="text" class="search-input" placeholder="Haber ara..." aria-label="Haber ara">
+                    <button class="search-btn" aria-label="Ara">
+                        <i class="fas fa-search" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <div class="weather-widget" aria-label="Hava Durumu">
+                    <span id="currentTemp">14°C</span>
+                    <span>İstanbul</span>
+                </div>
+            </div>
+        </div>
+
+        <nav role="navigation" aria-label="Ana navigasyon">
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menüyü aç/kapat">
+                <i class="fas fa-bars" aria-hidden="true"></i>
+            </button>
+            <ul class="main-nav">
+                <li><a href="/" class="active" data-category="ana-sayfa">Ana Sayfa</a></li>
+                <li><a href="/son-dakika" data-category="son-dakika">Son Dakika</a></li>
+                <li><a href="/ekonomi" data-category="ekonomi">Ekonomi</a></li>
+                <li><a href="/spor" data-category="spor">Spor</a></li>
+                <li><a href="/dunya" data-category="dunya">Dünya</a></li>
+                <li><a href="/teknoloji" data-category="teknoloji">Teknoloji</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content" role="main">
+        <div class="news-container">
+            <div class="main-content">
+                <!-- Manşet Haber -->
+                <section id="featuredNews" class="headline"></section>
+
+                <!-- Alt Manşetler -->
+                <section id="subHeadlines" class="sub-headlines"></section>
+
+                <!-- Diğer Haberler -->
+                <section id="newsContainer" class="news-grid"></section>
+            </div>
+            
+            <aside class="sidebar" role="complementary">
+                <div class="sidebar-widget weather-widget">
+                    <h3><i class="fas fa-cloud-sun" aria-hidden="true"></i> Hava Durumu</h3>
+                    <div id="weather" class="weather-content">
+                        <div class="current-weather">
+                            <span class="temp">14°C</span>
+                            <span class="condition">Parçalı Bulutlu</span>
+                            <div class="forecast">
+                                <!-- Weather forecast will be added here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sidebar-widget">
+                    <h3><i class="fas fa-chart-line" aria-hidden="true"></i> Çok Okunanlar</h3>
+                    <ul class="trending-news">
+                        <li>
+                            <span class="trend-number">1</span>
+                            <a href="#" class="trending-title">En çok okunan haber başlığı</a>
+                            <div class="trending-meta">
+                                <span class="trending-category">Gündem</span>
+                                <span class="read-count">2.5K okuma</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-widget currency-widget">
+                    <h3><i class="fas fa-dollar-sign" aria-hidden="true"></i> Döviz Kurları</h3>
+                    <div id="currency" class="currency-content">
+                        <div class="currency-item">
+                            <span class="currency-name">USD/TRY</span>
+                            <span class="currency-value">31.24 ₺</span>
+                            <span class="currency-change up">+0.25%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Newsletter Signup -->
+                <div class="sidebar-widget newsletter">
+                    <h3><i class="fas fa-envelope" aria-hidden="true"></i> Bülten</h3>
+                    <p>Günlük haberleri e-posta ile alın</p>
+                    <form class="newsletter-form" role="form">
+                        <label for="newsletter-email" class="visually-hidden">E-posta adresiniz</label>
+                        <input type="email" id="newsletter-email" placeholder="E-posta adresiniz" required>
+                        <button type="submit">Abone Ol</button>
+                    </form>
+                </div>
+            </aside>
+        </div>
+
+        <!-- Infinite Scroll Loader -->
+        <div class="infinite-scroll-loader" id="scrollLoader" aria-hidden="true">
+            <div class="loader"></div>
+        </div>
+    </main>
+
+    <footer role="contentinfo">
+        <div class="footer-grid">
+            <div class="footer-section brand">
+                <h2>NetGündem</h2>
+                <p>Türkiye'nin en güncel haber kaynağı</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-section links">
+                <h4>Kurumsal</h4>
+                <ul>
+                    <li><a href="/hakkimizda">Hakkımızda</a></li>
+                    <li><a href="/kunye">Künye</a></li>
+                    <li><a href="/iletisim">İletişim</a></li>
+                    <li><a href="/reklam">Reklam</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section links">
+                <h4>Kategoriler</h4>
+                <ul>
+                    <li><a href="/son-dakika">Son Dakika</a></li>
+                    <li><a href="/gundem">Gündem</a></li>
+                    <li><a href="/ekonomi">Ekonomi</a></li>
+                    <li><a href="/spor">Spor</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section mobile-app">
+                <h4>Mobil Uygulama</h4>
+                <p>NetGündem'i mobil cihazınızdan takip edin</p>
+                <div class="app-buttons">
+                    <a href="#" class="app-button" aria-label="App Store'dan indir">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="App Store">
+                    </a>
+                    <a href="#" class="app-button" aria-label="Google Play'den indir">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Play Store">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-info">
+                <p>&copy; 2024 NetGündem - Tüm hakları saklıdır.</p>
+                <div class="footer-links">
+                    <a href="/gizlilik">Gizlilik Politikası</a>
+                    <a href="/kullanim-sartlari">Kullanım Şartları</a>
+                    <a href="/kvkk">KVKK</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./script.js"></script>
+</body>
+</html> 
